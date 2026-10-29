@@ -16,3 +16,11 @@ def test_north_pole():
 
 def test_south_pole():
     assert geodetic_to_ecef(-90,0,0) == approx((0.0,0.0,-6356752.314245), abs=0.001)
+
+def test_latitude_above_90_raises():
+    with pytest.raises(ValueError):
+        geodetic_to_ecef(91, 0, 0)
+
+def test_latitude_below_minus_90_raises():
+    with pytest.raises(ValueError):
+        geodetic_to_ecef(-91, 0, 0)

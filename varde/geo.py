@@ -7,6 +7,9 @@ E2 = 2*F - F**2
 
 def geodetic_to_ecef(lat_deg, lon_deg, alt_m):
 
+    if not -90 <= lat_deg <= 90:
+        raise ValueError("Latitude must be betweeen -90 and 90 degrees")
+
     lat_rad = math.radians(lat_deg)
     lon_rad = math.radians(lon_deg)
     N = A / math.sqrt(1-E2 * math.sin(lat_rad)**2)

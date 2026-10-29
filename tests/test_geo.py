@@ -13,3 +13,6 @@ def test_equator_at_90_east():
 
 def test_north_pole():
     assert geodetic_to_ecef(90,0,0) == approx((0.0, 0.0, 6356752.314245), abs=0.001)
+
+def test_south_pole():
+    assert geodetic_to_ecef(-90,0,0) == approx((0.0,0.0,-6356752.314245), abs=0.001)
